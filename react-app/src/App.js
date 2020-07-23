@@ -15,7 +15,7 @@ function App() {
 	React.useEffect(() => {
 
 		//get all the posts
-		fetch('http://localhost:5000/posts', {
+		fetch('http://127.0.0.1/posts/', {
 			method: 'GET',
 		})
 			.then(res => res.json())
@@ -35,7 +35,7 @@ function App() {
 
 		const requestJson = JSON.stringify(post)
 		console.log(requestJson)
-		fetch('http://localhost:5000/post/add', {
+		fetch('http://127.0.0.1/post/add/', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: requestJson
