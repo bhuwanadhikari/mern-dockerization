@@ -4,10 +4,9 @@ services:
     container_name: react-app
     build: ./react-app
     ports: 
-      - '80:3000'
+      - '80:80'
     links:
       - server
-    stdin_open: true
   server:
     container_name: node-mongo-docker
     restart: always
