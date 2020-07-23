@@ -2,7 +2,7 @@ Install the docker and docker-compose stuffs at first in your machine from this 
 ## Usage
 
 ```
-docker-compose up
+docker-compose up --build
 ```
 
 Now, visit [http://localhost](http://localhost) to see.
