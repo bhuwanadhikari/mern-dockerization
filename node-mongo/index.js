@@ -22,11 +22,13 @@ mongoose
 
 //test the work
 app.get('/', (req, res) => {
+  console('Simple get request');
   res.json({ 'message': 'Working properly' })
 })
 
 //get all posts
 app.get('/posts', (req, res) => {
+  console.log("Getting of posts")
   Post
     .find()
     .then(posts => res.json(posts))

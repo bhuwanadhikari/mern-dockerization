@@ -1,6 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+
+const serverUrl = 'http://localhost:5000'
 
 const postModel = {
 	title: '',
@@ -10,12 +11,23 @@ const postModel = {
 function App() {
 
 	const [posts, setPosts] = React.useState([])
-	const [post, setPost] = React.useState({...postModel})
+	const [post, setPost] = React.useState({ ...postModel })
 
 	React.useEffect(() => {
 
+
 		//get all the posts
-		fetch('http://127.0.0.1/posts/', {
+		fetch(`${serverUrl}/posts/`, {
+			method: 'GET',
+		})
+			.then(res => res.json())
+			.then(res => {
+				console.log(res)
+			})
+			.catch(err => console.log(err))
+
+		//get all the posts
+		fetch(`${serverUrl}/posts/`, {
 			method: 'GET',
 		})
 			.then(res => res.json())
@@ -35,7 +47,7 @@ function App() {
 
 		const requestJson = JSON.stringify(post)
 		console.log(requestJson)
-		fetch('http://127.0.0.1/post/add/', {
+		fetch(`${serverUrl}post/add/`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: requestJson
@@ -43,8 +55,8 @@ function App() {
 			.then(res => res.json())
 			.then(res => {
 				console.log(res)
-				setPosts([...posts, {title: res.post.title, body: res.post.body}]);
-				setPost({...postModel})
+				setPosts([...posts, { title: res.post.title, body: res.post.body }]);
+				setPost({ ...postModel })
 			})
 			.catch(err => console.log(err))
 	}
@@ -61,10 +73,10 @@ function App() {
 			</div>
 			<div>
 				{posts.map((instance, index) => {
-					return <div key = {index}>
+					return <div key={index}>
 						<h4>{instance.title}</h4>
 						<p>{instance.body}</p>
-						<hr/>
+						<hr />
 					</div>
 				})}
 			</div>
