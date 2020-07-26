@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const serverUrl = 'http://localhost:5000'
+const serverUrl = 'http://ec2-100-25-201-174.compute-1.amazonaws.com:5000'
 
 const postModel = {
 	title: '',
