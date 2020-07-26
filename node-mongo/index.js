@@ -22,7 +22,6 @@ mongoose
 
 //test the work
 app.get('/', (req, res) => {
-  console('Simple get request');
   res.json({ 'message': 'Working properly' })
 })
 

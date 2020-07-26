@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 
-const serverUrl = 'http://server:5000'
+const serverUrl = 'http://localhost:5000'
 
 const postModel = {
 	title: '',
@@ -17,7 +17,7 @@ function App() {
 
 
 		//get all the posts
-		fetch(`${serverUrl}/posts/`, {
+		fetch(`${serverUrl}`, {
 			method: 'GET',
 		})
 			.then(res => res.json())
@@ -47,7 +47,7 @@ function App() {
 
 		const requestJson = JSON.stringify(post)
 		console.log(requestJson)
-		fetch(`${serverUrl}post/add/`, {
+		fetch(`${serverUrl}/post/add/`, {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: requestJson
